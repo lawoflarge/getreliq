@@ -1,86 +1,86 @@
 # AntikFinder — AI-Enhanced Antique Market Calendar (PoC)
 
-## Konzept
+## Concept
 
-**Nische:** Regionaler Antikmarkt-Kalender für den DACH-Raum mit AI-Layer  
-**These:** Bestehende Antikmarkt-Kalender sind reine "Kalender-Dumps" aus 2010er-Technologie. Niemand hat AI. Die kaufkräftige Zielgruppe 50+ wird komplett unterversorgt.
+**Niche:** Regional antique market calendar for the DACH region (Germany, Austria, Switzerland) with an AI layer on top  
+**Thesis:** Existing antique market calendars are plain "calendar dumps" built on 2010s technology. Nobody has AI. The high-spending 50+ target demographic is completely underserved.
 
-## Was dieses PoC demonstriert
+## What This PoC Demonstrates
 
-Ein User lädt ein Foto einer Antiquität hoch → Claude Vision identifiziert Periode, Stil & Marktwert → Automatische Affiliate-Links zu eBay, Catawiki und Pamono werden generiert.
+A user uploads a photo of an antique → Claude Vision identifies the period, style & market value → Affiliate links to eBay, Catawiki, and Pamono are generated automatically.
 
 ```
-User lädt Foto hoch
+User uploads photo
     ↓ POST /api/identify
-route.ts → base64 konvertieren
+route.ts → convert to base64
     ↓
 claudeIdentify.ts → Claude Opus 4.7 (Vision)
-    ↓ strukturiertes JSON
+    ↓ structured JSON
 {title, period, style, valueRange, searchTerms, confidence}
     ↓
-affiliateLinks.ts → 3 Tracking-URLs generieren
+affiliateLinks.ts → generate 3 tracking URLs
     ↓
-UI zeigt: Objekt-Details + 3 CTA-Buttons (eBay / Catawiki / Pamono)
+UI shows: object details + 3 CTA buttons (eBay / Catawiki / Pamono)
 ```
 
 ---
 
-## Marktanalyse
+## Market Analysis
 
-### Konkurrenz (DACH)
+### Competitors (DACH)
 
-| Plattform | Stärken | Schwächen |
-|-----------|---------|-----------|
-| meine-flohmarkt-termine.de | Große DB, DE/AT/CH | Kein AI, kein Foto, UI 2005 |
-| marktcom.de | App vorhanden, 30 Kategorien | Keine Empfehlungen, kein Preiskontext |
-| melan.de | 4M Besucher, 1.500 Events/Jahr | Nur eigene Events, kein Aggregator |
-| Antiques Atlas (UK) | Beste Suchtiefe, Händlerprofile | Nur UK, kein DACH |
+| Platform | Strengths | Weaknesses |
+|----------|-----------|------------|
+| meine-flohmarkt-termine.de | Large DB, DE/AT/CH | No AI, no photo, 2005 UI |
+| marktcom.de | App available, 30 categories | No recommendations, no price context |
+| melan.de | 4M visitors, 1,500 events/year | Own events only, not an aggregator |
+| Antiques Atlas (UK) | Best search depth, dealer profiles | UK only, no DACH |
 
-**Fazit:** Niemand hat AI. Klare Marktlücke.
+**Conclusion:** Nobody has AI. Clear market gap.
 
 ---
 
-## Monetarisierungsstrategie
+## Monetization Strategy
 
-### Phase 1 — Affiliate (ab Tag 1)
+### Phase 1 — Affiliate (Day 1)
 
-| Plattform | Provision | Netzwerk | Cookie | Einstieg |
-|-----------|-----------|----------|--------|----------|
-| eBay EPN | 3% auf Antiquitäten (max. €550) | Direkt (EPN) | 24h | Sofort, kein Mindesttraffic |
-| Catawiki | €40 pro Neukunde | Partnerize | 30–60 Tage | Website nötig |
-| Pamono | 5–7% je nach Volumen | FlexOffers | k.A. | Website + Approval |
+| Platform | Commission | Network | Cookie | Requirements |
+|----------|------------|---------|--------|--------------|
+| eBay EPN | 3% on antiques (max. €550) | Direct (EPN) | 24h | Instant, no traffic minimum |
+| Catawiki | €40 per new customer | Partnerize | 30–60 days | Website required |
+| Pamono | 5–7% by volume | FlexOffers | n/a | Website + approval |
 
-**Mechanik:** Foto-Upload → AI identifiziert Objekt → Affiliate-Links zu passenden Suchergebnissen
+**Mechanic:** Photo upload → AI identifies object → affiliate links to matching search results
 
-### Phase 2 — B2B Veranstalter (ab Monat 3)
+### Phase 2 — B2B Organizers (Month 3)
 
-- Basis: kostenlos listen
-- Premium (€29–€79/Monat): Featured-Platzierung, AI-generierte Eventbeschreibung, Statistiken
+- Base: free listings
+- Premium (€29–€79/month): featured placement, AI-generated event descriptions, statistics
 
-### Phase 3 — Premium User (ab Monat 6)
+### Phase 3 — Premium Users (Month 6)
 
-| Tier | Preis | Features |
+| Tier | Price | Features |
 |------|-------|----------|
-| Free | €0 | Kalender, 3 Foto-Scans/Monat |
-| Collector | €7/Monat | Unbegrenzte Scans, Alerts, Routenplaner |
-| Dealer | €29/Monat | Händlerprofil, Inventar-AI, Analytics |
+| Free | €0 | Calendar, 3 photo scans/month |
+| Collector | €7/month | Unlimited scans, alerts, route planner |
+| Dealer | €29/month | Dealer profile, inventory AI, analytics |
 
-### Unit Economics (Beispielrechnung bei 1.000 aktiven Usern)
+### Unit Economics (example at 1,000 active users)
 
 ```
-300 Collector-User × €7/Monat    = €2.100
-50 Premium-Veranstalter × €49    = €2.450
-Affiliate (konservativ)           = €1.500
-                                   ──────
-                                   ~€6.000/Monat
+300 Collector users × €7/month   = €2,100
+50 premium organizers × €49      = €2,450
+Affiliate (conservative)          = €1,500
+                                   ───────
+                                   ~€6,000/month
 ```
 
 ---
 
-## Tech-Stack
+## Tech Stack
 
-| Layer | Technologie |
-|-------|-------------|
+| Layer | Technology |
+|-------|------------|
 | Frontend | Next.js 15 + Tailwind CSS |
 | Backend | Next.js API Routes (serverless) |
 | AI | Claude API (claude-opus-4-7) via `@anthropic-ai/sdk` |
@@ -92,29 +92,29 @@ Affiliate (konservativ)           = €1.500
 
 ## Installation & Setup
 
-### 1. Dependencies installieren
+### 1. Install dependencies
 
 ```bash
 npm install
 ```
 
-### 2. Umgebungsvariablen setzen
+### 2. Set environment variables
 
 ```bash
 cp .env.local.example .env.local
 ```
 
-Dann `.env.local` bearbeiten:
+Edit `.env.local`:
 
 ```env
-# Pflicht
+# Required
 ANTHROPIC_API_KEY=sk-ant-...
 
-# Optional — Affiliate-Links funktionieren auch ohne, aber ohne Tracking
+# Optional — affiliate links work without these, but without tracking
 EBAY_CAMP_ID=YOUR_CAMPAIGN_ID
 ```
 
-### 3. Dev-Server starten
+### 3. Start dev server
 
 ```bash
 npm run dev
@@ -123,32 +123,32 @@ npm run dev
 
 ---
 
-## Affiliate-Programme aktivieren
+## Activating Affiliate Programs
 
-| Plattform | Schritt | Zeitaufwand |
-|-----------|---------|-------------|
-| eBay EPN | [partnernetwork.ebay.com](https://partnernetwork.ebay.com) → Camp-ID in `.env.local` eintragen | 10 Min |
-| Catawiki | [join.partnerize.com/catawiki](https://join.partnerize.com/catawiki/en) → Tracking-Prefix ersetzen | 30 Min |
-| Pamono | [flexoffers.com](https://www.flexoffers.com) → Approval abwarten, dann URL ersetzen | 1–7 Tage |
+| Platform | Steps | Time |
+|----------|-------|------|
+| eBay EPN | [partnernetwork.ebay.com](https://partnernetwork.ebay.com) → add Camp ID to `.env.local` | 10 min |
+| Catawiki | [join.partnerize.com/catawiki](https://join.partnerize.com/catawiki/en) → replace tracking prefix | 30 min |
+| Pamono | [flexoffers.com](https://www.flexoffers.com) → wait for approval, then replace URL | 1–7 days |
 
-Die Links funktionieren auch ohne Affiliate-IDs — sie leiten dann nur ohne Tracking weiter.
+Links work without affiliate IDs — they just forward without tracking.
 
 ---
 
-## Projektstruktur
+## Project Structure
 
 ```
-antikfinder/
+getreliq/
 ├── lib/
-│   ├── claudeIdentify.ts     ← Claude Vision API (Objekt-Identifikation)
-│   └── affiliateLinks.ts     ← Affiliate-Link-Generator (eBay/Catawiki/Pamono)
+│   ├── claudeIdentify.ts     ← Claude Vision API (object identification)
+│   └── affiliateLinks.ts     ← Affiliate link generator (eBay/Catawiki/Pamono)
 ├── app/
-│   ├── page.tsx              ← Haupt-UI (Drag & Drop Upload + Ergebnisanzeige)
+│   ├── page.tsx              ← Main UI (drag & drop upload + results card)
 │   ├── layout.tsx
 │   ├── globals.css
 │   └── api/
 │       └── identify/
-│           └── route.ts      ← API-Endpoint (POST /api/identify)
+│           └── route.ts      ← API endpoint (POST /api/identify)
 ├── .env.local.example
 ├── next.config.ts
 ├── tailwind.config.ts
@@ -160,19 +160,19 @@ antikfinder/
 
 ## Roadmap
 
-### MVP (dieses PoC — Woche 1–6)
-- [x] Foto-Upload mit Drag & Drop
-- [x] Claude Vision Identifikation (Periode, Stil, Marktwert, Zustand)
-- [x] Automatische Affiliate-Links (eBay, Catawiki, Pamono)
-- [ ] Affiliate-Accounts aktivieren
+### MVP (this PoC — weeks 1–6)
+- [x] Drag & drop photo upload
+- [x] Claude Vision identification (period, style, market value, condition)
+- [x] Automatic affiliate links (eBay, Catawiki, Pamono)
+- [ ] Activate affiliate accounts
 
-### Phase 2 (Monat 2–3)
-- [ ] Antikmarkt-Kalender Aggregator (Scraping der Top 3 DACH-Plattformen)
-- [ ] Kartenansicht mit Radius-Suche
-- [ ] Persönliche Markt-Alerts ("Ich suche Biedermeier in 50km")
+### Phase 2 (months 2–3)
+- [ ] Antique market calendar aggregator (scraping top 3 DACH platforms)
+- [ ] Map view with radius search
+- [ ] Personal market alerts ("I'm looking for Biedermeier within 50km")
 
-### Phase 3 (Monat 4–6)
-- [ ] Händlerprofile
-- [ ] Routen-Planer ("3 Märkte, ein Wochenende")
-- [ ] User-Accounts (Supabase Auth)
-- [ ] Premium-Subscriptions (Stripe)
+### Phase 3 (months 4–6)
+- [ ] Dealer profiles
+- [ ] Route planner ("3 markets, one weekend")
+- [ ] User accounts (Supabase Auth)
+- [ ] Premium subscriptions (Stripe)
