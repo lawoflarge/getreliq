@@ -1,14 +1,12 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
+  content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./lib/**/*.{ts,tsx}"],
   theme: {
     extend: {
-      colors: {
-        antik: {
-          gold: "#C9A84C",
-          dark: "#1C1410",
-        },
+      fontFamily: {
+        serif: ["var(--font-playfair)", "Georgia", "serif"],
+        sans:  ["var(--font-inter)", "system-ui", "sans-serif"],
       },
     },
   },
