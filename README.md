@@ -1,4 +1,4 @@
-# AntikFinder — AI-Enhanced Antique Market Calendar (PoC)
+# AntikFinder: AI-Enhanced Antique Market Calendar (PoC)
 
 ## Concept
 
@@ -42,22 +42,22 @@ UI shows: object details + 3 CTA buttons (eBay / Catawiki / Pamono)
 
 ## Monetization Strategy
 
-### Phase 1 — Affiliate (Day 1)
+### Phase 1: Affiliate (Day 1)
 
 | Platform | Commission | Network | Cookie | Requirements |
 |----------|------------|---------|--------|--------------|
 | eBay EPN | 3% on antiques (max. €550) | Direct (EPN) | 24h | Instant, no traffic minimum |
-| Catawiki | €40 per new customer | Partnerize | 30–60 days | Website required |
-| Pamono | 5–7% by volume | FlexOffers | n/a | Website + approval |
+| Catawiki | €40 per new customer | Partnerize | 30-60 days | Website required |
+| Pamono | 5-7% by volume | FlexOffers | n/a | Website + approval |
 
 **Mechanic:** Photo upload → AI identifies object → affiliate links to matching search results
 
-### Phase 2 — B2B Organizers (Month 3)
+### Phase 2: B2B Organizers (Month 3)
 
 - Base: free listings
-- Premium (€29–€79/month): featured placement, AI-generated event descriptions, statistics
+- Premium (€29-€79/month): featured placement, AI-generated event descriptions, statistics
 
-### Phase 3 — Premium Users (Month 6)
+### Phase 3: Premium Users (Month 6)
 
 | Tier | Price | Features |
 |------|-------|----------|
@@ -129,9 +129,9 @@ npm run dev
 |----------|-------|------|
 | eBay EPN | [partnernetwork.ebay.com](https://partnernetwork.ebay.com) → add Camp ID to `.env.local` | 10 min |
 | Catawiki | [join.partnerize.com/catawiki](https://join.partnerize.com/catawiki/en) → replace tracking prefix | 30 min |
-| Pamono | [flexoffers.com](https://www.flexoffers.com) → wait for approval, then replace URL | 1–7 days |
+| Pamono | [flexoffers.com](https://www.flexoffers.com) → wait for approval, then replace URL | 1-7 days |
 
-Links work without affiliate IDs — they just forward without tracking.
+Links work without affiliate IDs: they just forward without tracking.
 
 ---
 
@@ -160,18 +160,18 @@ getreliq/
 
 ## Roadmap
 
-### MVP (this PoC — weeks 1–6)
+### MVP (this PoC: weeks 1-6)
 - [x] Drag & drop photo upload
 - [x] Claude Vision identification (period, style, market value, condition)
 - [x] Automatic affiliate links (eBay, Catawiki, Pamono)
 - [ ] Activate affiliate accounts
 
-### Phase 2 (months 2–3)
+### Phase 2 (months 2-3)
 - [ ] Antique market calendar aggregator (scraping top 3 DACH platforms)
 - [ ] Map view with radius search
 - [ ] Personal market alerts ("I'm looking for Biedermeier within 50km")
 
-### Phase 3 (months 4–6)
+### Phase 3 (months 4-6)
 - [ ] Dealer profiles
 - [ ] Route planner ("3 markets, one weekend")
 - [ ] User accounts (Supabase Auth)
